@@ -1,0 +1,759 @@
+{
+  "overview": {
+    "total_rows": 18207,
+    "total_columns": 18,
+    "total_cells": 327726,
+    "memory_usage_mb": 7.731926918029785,
+    "duplicate_rows": 0,
+    "column_types": {
+      "ID": "id",
+      "Name": "text",
+      "Age": "numeric",
+      "Nationality": "categorical",
+      "Overall": "numeric",
+      "Potential": "numeric",
+      "Club": "categorical",
+      "Value": "numeric",
+      "Wage": "numeric",
+      "Preferred Foot": "categorical",
+      "International Reputation": "numeric",
+      "Skill Moves": "numeric",
+      "Position": "categorical",
+      "Joined": "numeric",
+      "Contract Valid Until": "categorical",
+      "Height": "numeric",
+      "Weight": "numeric",
+      "Release Clause": "numeric"
+    }
+  },
+  "data_quality": {
+    "missing_by_column": {
+      "ID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Name": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Age": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Nationality": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Overall": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Potential": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Club": {
+        "count": 241,
+        "percentage": 1.32
+      },
+      "Value": {
+        "count": 252,
+        "percentage": 1.38
+      },
+      "Wage": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Preferred Foot": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "International Reputation": {
+        "count": 48,
+        "percentage": 0.26
+      },
+      "Skill Moves": {
+        "count": 48,
+        "percentage": 0.26
+      },
+      "Position": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Joined": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Contract Valid Until": {
+        "count": 289,
+        "percentage": 1.59
+      },
+      "Height": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Weight": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Release Clause": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "high_missing_columns": [],
+    "constant_columns": [],
+    "high_cardinality_columns": [
+      {
+        "column": "Name",
+        "unique_count": 17194,
+        "unique_ratio": 0.944
+      }
+    ]
+  },
+  "categorical_analysis": {
+    "Nationality": {
+      "unique_values": 164,
+      "most_frequent": {
+        "value": "England",
+        "count": 1662,
+        "percentage": 9.13
+      },
+      "value_distribution": [
+        {
+          "value": "England",
+          "count": 1662,
+          "percentage": 9.13
+        },
+        {
+          "value": "Germany",
+          "count": 1198,
+          "percentage": 6.58
+        },
+        {
+          "value": "Spain",
+          "count": 1072,
+          "percentage": 5.89
+        },
+        {
+          "value": "Argentina",
+          "count": 937,
+          "percentage": 5.15
+        },
+        {
+          "value": "France",
+          "count": 914,
+          "percentage": 5.02
+        },
+        {
+          "value": "Brazil",
+          "count": 827,
+          "percentage": 4.54
+        },
+        {
+          "value": "Italy",
+          "count": 702,
+          "percentage": 3.86
+        },
+        {
+          "value": "Colombia",
+          "count": 618,
+          "percentage": 3.39
+        },
+        {
+          "value": "Japan",
+          "count": 478,
+          "percentage": 2.63
+        },
+        {
+          "value": "Netherlands",
+          "count": 453,
+          "percentage": 2.49
+        }
+      ]
+    },
+    "Club": {
+      "unique_values": 651,
+      "most_frequent": {
+        "value": "FC Barcelona",
+        "count": 33,
+        "percentage": 0.18
+      },
+      "value_distribution": [
+        {
+          "value": "FC Barcelona",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Manchester United",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Manchester City",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Chelsea",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Real Madrid",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Atl\u00e9tico Madrid",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Tottenham Hotspur",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Liverpool",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Arsenal",
+          "count": 33,
+          "percentage": 0.18
+        },
+        {
+          "value": "Borussia Dortmund",
+          "count": 33,
+          "percentage": 0.18
+        }
+      ]
+    },
+    "Preferred Foot": {
+      "unique_values": 2,
+      "most_frequent": {
+        "value": "Right",
+        "count": 13996,
+        "percentage": 76.87
+      },
+      "value_distribution": [
+        {
+          "value": "Right",
+          "count": 13996,
+          "percentage": 76.87
+        },
+        {
+          "value": "Left",
+          "count": 4211,
+          "percentage": 23.13
+        }
+      ]
+    },
+    "Position": {
+      "unique_values": 27,
+      "most_frequent": {
+        "value": "ST",
+        "count": 2154,
+        "percentage": 11.83
+      },
+      "value_distribution": [
+        {
+          "value": "ST",
+          "count": 2154,
+          "percentage": 11.83
+        },
+        {
+          "value": "GK",
+          "count": 2027,
+          "percentage": 11.13
+        },
+        {
+          "value": "CB",
+          "count": 1779,
+          "percentage": 9.77
+        },
+        {
+          "value": "CM",
+          "count": 1395,
+          "percentage": 7.66
+        },
+        {
+          "value": "LB",
+          "count": 1372,
+          "percentage": 7.54
+        },
+        {
+          "value": "RB",
+          "count": 1291,
+          "percentage": 7.09
+        },
+        {
+          "value": "RM",
+          "count": 1127,
+          "percentage": 6.19
+        },
+        {
+          "value": "LM",
+          "count": 1095,
+          "percentage": 6.01
+        },
+        {
+          "value": "CAM",
+          "count": 959,
+          "percentage": 5.27
+        },
+        {
+          "value": "CDM",
+          "count": 948,
+          "percentage": 5.21
+        }
+      ]
+    },
+    "Contract Valid Until": {
+      "unique_values": 35,
+      "most_frequent": {
+        "value": "2019-01-01",
+        "count": 4870,
+        "percentage": 27.18
+      },
+      "value_distribution": [
+        {
+          "value": "2019-01-01",
+          "count": 4870,
+          "percentage": 27.18
+        },
+        {
+          "value": "2021-01-01",
+          "count": 4360,
+          "percentage": 24.33
+        },
+        {
+          "value": "2020-01-01",
+          "count": 4027,
+          "percentage": 22.47
+        },
+        {
+          "value": "2022-01-01",
+          "count": 1477,
+          "percentage": 8.24
+        },
+        {
+          "value": "2023-01-01",
+          "count": 1053,
+          "percentage": 5.88
+        },
+        {
+          "value": "2019-06-30",
+          "count": 931,
+          "percentage": 5.2
+        },
+        {
+          "value": "2018-01-01",
+          "count": 886,
+          "percentage": 4.94
+        },
+        {
+          "value": "2018-12-31",
+          "count": 144,
+          "percentage": 0.8
+        },
+        {
+          "value": "2019-05-31",
+          "count": 60,
+          "percentage": 0.33
+        },
+        {
+          "value": "2024-01-01",
+          "count": 23,
+          "percentage": 0.13
+        }
+      ]
+    }
+  },
+  "numeric_analysis": {
+    "Age": {
+      "count": 18207,
+      "mean": 25.122205745043114,
+      "median": 25.0,
+      "std": 4.66994271341431,
+      "min": 16.0,
+      "max": 45.0,
+      "q25": 21.0,
+      "q75": 28.0,
+      "outliers": {
+        "count": 47,
+        "percentage": 0.26,
+        "lower_bound": 10.5,
+        "upper_bound": 38.5
+      },
+      "skewness": 0.3917318621906765,
+      "kurtosis": -0.45971689766482937
+    },
+    "Overall": {
+      "count": 18207,
+      "mean": 66.23869940132916,
+      "median": 66.0,
+      "std": 6.9089296118828925,
+      "min": 46.0,
+      "max": 94.0,
+      "q25": 62.0,
+      "q75": 71.0,
+      "outliers": {
+        "count": 163,
+        "percentage": 0.9,
+        "lower_bound": 48.5,
+        "upper_bound": 84.5
+      },
+      "skewness": 0.06717938706167433,
+      "kurtosis": 0.09621262392844043
+    },
+    "Potential": {
+      "count": 18207,
+      "mean": 71.30729939034437,
+      "median": 71.0,
+      "std": 6.13649558349916,
+      "min": 48.0,
+      "max": 95.0,
+      "q25": 67.0,
+      "q75": 75.0,
+      "outliers": {
+        "count": 160,
+        "percentage": 0.88,
+        "lower_bound": 55.0,
+        "upper_bound": 87.0
+      },
+      "skewness": 0.26613166857867315,
+      "kurtosis": 0.03548644518945654
+    },
+    "Value": {
+      "count": 17955,
+      "mean": 2444.5302144249513,
+      "median": 700.0,
+      "std": 5626.715434153283,
+      "min": 10.0,
+      "max": 118500.0,
+      "q25": 325.0,
+      "q75": 2100.0,
+      "outliers": {
+        "count": 2420,
+        "percentage": 13.48,
+        "lower_bound": -2337.5,
+        "upper_bound": 4762.5
+      },
+      "skewness": 7.031023238348758,
+      "kurtosis": 75.9815564137106
+    },
+    "Wage": {
+      "count": 18207,
+      "mean": 9.731312132696216,
+      "median": 3.0,
+      "std": 21.99929040599253,
+      "min": 0.0,
+      "max": 565.0,
+      "q25": 1.0,
+      "q75": 9.0,
+      "outliers": {
+        "count": 2031,
+        "percentage": 11.16,
+        "lower_bound": -11.0,
+        "upper_bound": 21.0
+      },
+      "skewness": 7.905367559911542,
+      "kurtosis": 100.68442655545151
+    },
+    "International Reputation": {
+      "count": 18159,
+      "mean": 1.1132220937276283,
+      "median": 1.0,
+      "std": 0.39403075584421304,
+      "min": 1.0,
+      "max": 5.0,
+      "q25": 1.0,
+      "q75": 1.0,
+      "outliers": {
+        "count": 1627,
+        "percentage": 8.96,
+        "lower_bound": 1.0,
+        "upper_bound": 1.0
+      },
+      "skewness": 4.0600843561207745,
+      "kurtosis": 18.95542521298554
+    },
+    "Skill Moves": {
+      "count": 18159,
+      "mean": 2.361308442094829,
+      "median": 2.0,
+      "std": 0.7561640557919401,
+      "min": 1.0,
+      "max": 5.0,
+      "q25": 2.0,
+      "q75": 3.0,
+      "outliers": {
+        "count": 51,
+        "percentage": 0.28,
+        "lower_bound": 0.5,
+        "upper_bound": 4.5
+      },
+      "skewness": 0.14988566880359996,
+      "kurtosis": -0.08790784828896037
+    },
+    "Joined": {
+      "count": 18207,
+      "mean": 2016.4206074586698,
+      "median": 2017.0,
+      "std": 2.0181940223932635,
+      "min": 1991.0,
+      "max": 2018.0,
+      "q25": 2016.0,
+      "q75": 2018.0,
+      "outliers": {
+        "count": 920,
+        "percentage": 5.05,
+        "lower_bound": 2013.0,
+        "upper_bound": 2021.0
+      },
+      "skewness": -2.575424091288451,
+      "kurtosis": 10.975033544724095
+    },
+    "Height": {
+      "count": 18207,
+      "mean": 5.946771114415258,
+      "median": 5.916666666666667,
+      "std": 0.22051402777122514,
+      "min": 5.083333333333333,
+      "max": 6.75,
+      "q25": 5.75,
+      "q75": 6.083333333333333,
+      "outliers": {
+        "count": 41,
+        "percentage": 0.23,
+        "lower_bound": 5.25,
+        "upper_bound": 6.583333333333332
+      },
+      "skewness": -0.015475071604021723,
+      "kurtosis": -0.22172147077585302
+    },
+    "Weight": {
+      "count": 18207,
+      "mean": 165.97912880665237,
+      "median": 165.0,
+      "std": 15.572774957743666,
+      "min": 110.0,
+      "max": 243.0,
+      "q25": 154.0,
+      "q75": 176.0,
+      "outliers": {
+        "count": 75,
+        "percentage": 0.41,
+        "lower_bound": 121.0,
+        "upper_bound": 209.0
+      },
+      "skewness": 0.21685456451214413,
+      "kurtosis": 0.09919560571231267
+    }
+  },
+  "relationships": {
+    "correlations": {
+      "matrix": {
+        "Age": {
+          "Age": 1.0,
+          "Overall": 0.452,
+          "Potential": -0.253,
+          "Value": 0.078,
+          "Wage": 0.141,
+          "International Reputation": 0.254,
+          "Skill Moves": 0.028,
+          "Joined": -0.203,
+          "Height": 0.083,
+          "Weight": 0.23,
+          "Release Clause": 0.059
+        },
+        "Overall": {
+          "Age": 0.452,
+          "Overall": 1.0,
+          "Potential": 0.661,
+          "Value": 0.632,
+          "Wage": 0.572,
+          "International Reputation": 0.499,
+          "Skill Moves": 0.414,
+          "Joined": -0.169,
+          "Height": 0.039,
+          "Weight": 0.155,
+          "Release Clause": 0.598
+        },
+        "Potential": {
+          "Age": -0.253,
+          "Overall": 0.661,
+          "Potential": 1.0,
+          "Value": 0.58,
+          "Wage": 0.486,
+          "International Reputation": 0.373,
+          "Skill Moves": 0.354,
+          "Joined": -0.048,
+          "Height": -0.01,
+          "Weight": -0.007,
+          "Release Clause": 0.562
+        },
+        "Value": {
+          "Age": 0.078,
+          "Overall": 0.632,
+          "Potential": 0.58,
+          "Value": 1.0,
+          "Wage": 0.858,
+          "International Reputation": 0.656,
+          "Skill Moves": 0.317,
+          "Joined": -0.116,
+          "Height": 0.003,
+          "Weight": 0.047,
+          "Release Clause": 0.973
+        },
+        "Wage": {
+          "Age": 0.141,
+          "Overall": 0.572,
+          "Potential": 0.486,
+          "Value": 0.858,
+          "Wage": 1.0,
+          "International Reputation": 0.669,
+          "Skill Moves": 0.263,
+          "Joined": -0.142,
+          "Height": 0.02,
+          "Weight": 0.065,
+          "Release Clause": 0.828
+        },
+        "International Reputation": {
+          "Age": 0.254,
+          "Overall": 0.499,
+          "Potential": 0.373,
+          "Value": 0.656,
+          "Wage": 0.669,
+          "International Reputation": 1.0,
+          "Skill Moves": 0.208,
+          "Joined": -0.133,
+          "Height": 0.035,
+          "Weight": 0.088,
+          "Release Clause": 0.621
+        },
+        "Skill Moves": {
+          "Age": 0.028,
+          "Overall": 0.414,
+          "Potential": 0.354,
+          "Value": 0.317,
+          "Wage": 0.263,
+          "International Reputation": 0.208,
+          "Skill Moves": 1.0,
+          "Joined": 0.021,
+          "Height": -0.423,
+          "Weight": -0.351,
+          "Release Clause": 0.297
+        },
+        "Joined": {
+          "Age": -0.203,
+          "Overall": -0.169,
+          "Potential": -0.048,
+          "Value": -0.116,
+          "Wage": -0.142,
+          "International Reputation": -0.133,
+          "Skill Moves": 0.021,
+          "Joined": 1.0,
+          "Height": 0.001,
+          "Weight": -0.028,
+          "Release Clause": -0.115
+        },
+        "Height": {
+          "Age": 0.083,
+          "Overall": 0.039,
+          "Potential": -0.01,
+          "Value": 0.003,
+          "Wage": 0.02,
+          "International Reputation": 0.035,
+          "Skill Moves": -0.423,
+          "Joined": 0.001,
+          "Height": 1.0,
+          "Weight": 0.755,
+          "Release Clause": 0.002
+        },
+        "Weight": {
+          "Age": 0.23,
+          "Overall": 0.155,
+          "Potential": -0.007,
+          "Value": 0.047,
+          "Wage": 0.065,
+          "International Reputation": 0.088,
+          "Skill Moves": -0.351,
+          "Joined": -0.028,
+          "Height": 0.755,
+          "Weight": 1.0,
+          "Release Clause": 0.038
+        },
+        "Release Clause": {
+          "Age": 0.059,
+          "Overall": 0.598,
+          "Potential": 0.562,
+          "Value": 0.973,
+          "Wage": 0.828,
+          "International Reputation": 0.621,
+          "Skill Moves": 0.297,
+          "Joined": -0.115,
+          "Height": 0.002,
+          "Weight": 0.038,
+          "Release Clause": 1.0
+        }
+      },
+      "strong_correlations": [
+        {
+          "column1": "Value",
+          "column2": "Release Clause",
+          "correlation": 0.973
+        },
+        {
+          "column1": "Value",
+          "column2": "Wage",
+          "correlation": 0.858
+        },
+        {
+          "column1": "Wage",
+          "column2": "Release Clause",
+          "correlation": 0.828
+        },
+        {
+          "column1": "Height",
+          "column2": "Weight",
+          "correlation": 0.755
+        },
+        {
+          "column1": "Wage",
+          "column2": "International Reputation",
+          "correlation": 0.669
+        },
+        {
+          "column1": "Overall",
+          "column2": "Potential",
+          "correlation": 0.661
+        },
+        {
+          "column1": "Value",
+          "column2": "International Reputation",
+          "correlation": 0.656
+        },
+        {
+          "column1": "Overall",
+          "column2": "Value",
+          "correlation": 0.632
+        },
+        {
+          "column1": "International Reputation",
+          "column2": "Release Clause",
+          "correlation": 0.621
+        },
+        {
+          "column1": "Overall",
+          "column2": "Release Clause",
+          "correlation": 0.598
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "overview": {
+    "total_rows": 3000,
+    "total_columns": 12,
+    "total_cells": 36000,
+    "memory_usage_mb": 0.8558473587036133,
+    "duplicate_rows": 0,
+    "column_types": {
+      "date": "id",
+      "product": "categorical",
+      "region": "categorical",
+      "channel": "categorical",
+      "units_sold": "numeric",
+      "unit_price": "numeric",
+      "discount_percent": "numeric",
+      "shipping_cost": "numeric",
+      "customer_rating": "numeric",
+      "returns": "binary",
+      "revenue": "id",
+      "profit": "id"
+    }
+  },
+  "data_quality": {
+    "missing_by_column": {
+      "date": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "product": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "region": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "channel": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "units_sold": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "unit_price": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "discount_percent": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "shipping_cost": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "customer_rating": {
+        "count": 94,
+        "percentage": 3.13
+      },
+      "returns": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "revenue": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "profit": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "high_missing_columns": [],
+    "constant_columns": [],
+    "high_cardinality_columns": []
+  },
+  "categorical_analysis": {
+    "product": {
+      "unique_values": 5,
+      "most_frequent": {
+        "value": "Product_D",
+        "count": 620,
+        "percentage": 20.67
+      },
+      "value_distribution": [
+        {
+          "value": "Product_D",
+          "count": 620,
+          "percentage": 20.67
+        },
+        {
+          "value": "Product_A",
+          "count": 618,
+          "percentage": 20.6
+        },
+        {
+          "value": "Product_E",
+          "count": 613,
+          "percentage": 20.43
+        },
+        {
+          "value": "Product_B",
+          "count": 584,
+          "percentage": 19.47
+        },
+        {
+          "value": "Product_C",
+          "count": 565,
+          "percentage": 18.83
+        }
+      ]
+    },
+    "region": {
+      "unique_values": 4,
+      "most_frequent": {
+        "value": "East",
+        "count": 762,
+        "percentage": 25.4
+      },
+      "value_distribution": [
+        {
+          "value": "East",
+          "count": 762,
+          "percentage": 25.4
+        },
+        {
+          "value": "North",
+          "count": 761,
+          "percentage": 25.37
+        },
+        {
+          "value": "West",
+          "count": 758,
+          "percentage": 25.27
+        },
+        {
+          "value": "South",
+          "count": 719,
+          "percentage": 23.97
+        }
+      ]
+    },
+    "channel": {
+      "unique_values": 3,
+      "most_frequent": {
+        "value": "Online",
+        "count": 1522,
+        "percentage": 50.73
+      },
+      "value_distribution": [
+        {
+          "value": "Online",
+          "count": 1522,
+          "percentage": 50.73
+        },
+        {
+          "value": "Retail",
+          "count": 875,
+          "percentage": 29.17
+        },
+        {
+          "value": "Wholesale",
+          "count": 603,
+          "percentage": 20.1
+        }
+      ]
+    },
+    "returns": {
+      "unique_values": 2,
+      "most_frequent": {
+        "value": "0",
+        "count": 2862,
+        "percentage": 95.4
+      },
+      "value_distribution": [
+        {
+          "value": "0",
+          "count": 2862,
+          "percentage": 95.4
+        },
+        {
+          "value": "1",
+          "count": 138,
+          "percentage": 4.6
+        }
+      ]
+    }
+  },
+  "numeric_analysis": {
+    "units_sold": {
+      "count": 3000,
+      "mean": 15.003333333333334,
+      "median": 15.0,
+      "std": 3.866217544524547,
+      "min": 3.0,
+      "max": 29.0,
+      "q25": 12.0,
+      "q75": 18.0,
+      "outliers": {
+        "count": 3,
+        "percentage": 0.1,
+        "lower_bound": 3.0,
+        "upper_bound": 27.0
+      },
+      "skewness": 0.2325391011228503,
+      "kurtosis": -0.06299758417753809
+    },
+    "unit_price": {
+      "count": 3000,
+      "mean": 50.34759,
+      "median": 50.29,
+      "std": 15.10395152520664,
+      "min": 10.0,
+      "max": 101.43,
+      "q25": 40.2775,
+      "q75": 60.445,
+      "outliers": {
+        "count": 26,
+        "percentage": 0.87,
+        "lower_bound": 10.026250000000008,
+        "upper_bound": 90.69624999999999
+      },
+      "skewness": 0.039462461277061864,
+      "kurtosis": -0.014159420697311909
+    },
+    "discount_percent": {
+      "count": 3000,
+      "mean": 7.008333333333334,
+      "median": 5.0,
+      "std": 7.432586696695181,
+      "min": 0.0,
+      "max": 25.0,
+      "q25": 0.0,
+      "q75": 10.0,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": -15.0,
+        "upper_bound": 25.0
+      },
+      "skewness": 0.8982251481241946,
+      "kurtosis": -0.10147064731491406
+    },
+    "shipping_cost": {
+      "count": 3000,
+      "mean": 8.08815,
+      "median": 8.07,
+      "std": 2.9268990969296955,
+      "min": 2.0,
+      "max": 19.83,
+      "q25": 6.06,
+      "q75": 10.08,
+      "outliers": {
+        "count": 15,
+        "percentage": 0.5,
+        "lower_bound": 0.029999999999998472,
+        "upper_bound": 16.11
+      },
+      "skewness": 0.15092145288879255,
+      "kurtosis": -0.1702884932605575
+    },
+    "customer_rating": {
+      "count": 2906,
+      "mean": 3.832415691672402,
+      "median": 4.0,
+      "std": 1.1618411470132661,
+      "min": 1.0,
+      "max": 5.0,
+      "q25": 3.0,
+      "q75": 5.0,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": 0.0,
+        "upper_bound": 8.0
+      },
+      "skewness": -0.8697304054225349,
+      "kurtosis": -0.12217881060761604
+    }
+  },
+  "relationships": {
+    "correlations": {
+      "matrix": {
+        "units_sold": {
+          "units_sold": 1.0,
+          "unit_price": -0.019,
+          "discount_percent": -0.034,
+          "shipping_cost": 0.023,
+          "customer_rating": 0.021
+        },
+        "unit_price": {
+          "units_sold": -0.019,
+          "unit_price": 1.0,
+          "discount_percent": 0.023,
+          "shipping_cost": -0.008,
+          "customer_rating": 0.02
+        },
+        "discount_percent": {
+          "units_sold": -0.034,
+          "unit_price": 0.023,
+          "discount_percent": 1.0,
+          "shipping_cost": 0.024,
+          "customer_rating": -0.004
+        },
+        "shipping_cost": {
+          "units_sold": 0.023,
+          "unit_price": -0.008,
+          "discount_percent": 0.024,
+          "shipping_cost": 1.0,
+          "customer_rating": 0.004
+        },
+        "customer_rating": {
+          "units_sold": 0.021,
+          "unit_price": 0.02,
+          "discount_percent": -0.004,
+          "shipping_cost": 0.004,
+          "customer_rating": 1.0
+        }
+      },
+      "strong_correlations": []
+    }
+  }
+}

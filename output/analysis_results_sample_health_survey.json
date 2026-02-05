@@ -1,0 +1,414 @@
+{
+  "overview": {
+    "total_rows": 5000,
+    "total_columns": 13,
+    "total_cells": 65000,
+    "memory_usage_mb": 2.0506153106689453,
+    "duplicate_rows": 0,
+    "column_types": {
+      "state": "categorical",
+      "age_group": "categorical",
+      "gender": "categorical",
+      "education_level": "categorical",
+      "health_status": "categorical",
+      "bmi": "numeric",
+      "exercise_level": "categorical",
+      "hours_sleep": "numeric",
+      "daily_calories": "numeric",
+      "has_chronic_disease": "binary",
+      "smoker": "categorical",
+      "drinks_per_week": "numeric",
+      "satisfaction_score": "numeric"
+    }
+  },
+  "data_quality": {
+    "missing_by_column": {
+      "state": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "age_group": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "gender": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "education_level": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "health_status": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "bmi": {
+        "count": 252,
+        "percentage": 5.04
+      },
+      "exercise_level": {
+        "count": 1508,
+        "percentage": 30.16
+      },
+      "hours_sleep": {
+        "count": 271,
+        "percentage": 5.42
+      },
+      "daily_calories": {
+        "count": 250,
+        "percentage": 5.0
+      },
+      "has_chronic_disease": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "smoker": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "drinks_per_week": {
+        "count": 231,
+        "percentage": 4.62
+      },
+      "satisfaction_score": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "high_missing_columns": [],
+    "constant_columns": [],
+    "high_cardinality_columns": []
+  },
+  "categorical_analysis": {
+    "state": {
+      "unique_values": 10,
+      "most_frequent": {
+        "value": "California",
+        "count": 533,
+        "percentage": 10.66
+      },
+      "value_distribution": [
+        {
+          "value": "California",
+          "count": 533,
+          "percentage": 10.66
+        },
+        {
+          "value": "Georgia",
+          "count": 516,
+          "percentage": 10.32
+        },
+        {
+          "value": "Florida",
+          "count": 513,
+          "percentage": 10.26
+        },
+        {
+          "value": "Illinois",
+          "count": 513,
+          "percentage": 10.26
+        },
+        {
+          "value": "Pennsylvania",
+          "count": 507,
+          "percentage": 10.14
+        },
+        {
+          "value": "Michigan",
+          "count": 496,
+          "percentage": 9.92
+        },
+        {
+          "value": "New York",
+          "count": 486,
+          "percentage": 9.72
+        },
+        {
+          "value": "North Carolina",
+          "count": 486,
+          "percentage": 9.72
+        },
+        {
+          "value": "Ohio",
+          "count": 480,
+          "percentage": 9.6
+        },
+        {
+          "value": "Texas",
+          "count": 470,
+          "percentage": 9.4
+        }
+      ]
+    },
+    "age_group": {
+      "unique_values": 6,
+      "most_frequent": {
+        "value": "25-34",
+        "count": 908,
+        "percentage": 18.16
+      },
+      "value_distribution": [
+        {
+          "value": "25-34",
+          "count": 908,
+          "percentage": 18.16
+        },
+        {
+          "value": "18-24",
+          "count": 843,
+          "percentage": 16.86
+        },
+        {
+          "value": "65+",
+          "count": 823,
+          "percentage": 16.46
+        },
+        {
+          "value": "45-54",
+          "count": 819,
+          "percentage": 16.38
+        },
+        {
+          "value": "55-64",
+          "count": 817,
+          "percentage": 16.34
+        },
+        {
+          "value": "35-44",
+          "count": 790,
+          "percentage": 15.8
+        }
+      ]
+    },
+    "gender": {
+      "unique_values": 3,
+      "most_frequent": {
+        "value": "Female",
+        "count": 2474,
+        "percentage": 49.48
+      },
+      "value_distribution": [
+        {
+          "value": "Female",
+          "count": 2474,
+          "percentage": 49.48
+        },
+        {
+          "value": "Male",
+          "count": 2437,
+          "percentage": 48.74
+        },
+        {
+          "value": "Other",
+          "count": 89,
+          "percentage": 1.78
+        }
+      ]
+    },
+    "education_level": {
+      "unique_values": 5,
+      "most_frequent": {
+        "value": "Some College",
+        "count": 1497,
+        "percentage": 29.94
+      },
+      "value_distribution": [
+        {
+          "value": "Some College",
+          "count": 1497,
+          "percentage": 29.94
+        },
+        {
+          "value": "College Graduate",
+          "count": 1265,
+          "percentage": 25.3
+        },
+        {
+          "value": "High School",
+          "count": 1218,
+          "percentage": 24.36
+        },
+        {
+          "value": "Less than HS",
+          "count": 524,
+          "percentage": 10.48
+        },
+        {
+          "value": "Graduate Degree",
+          "count": 496,
+          "percentage": 9.92
+        }
+      ]
+    },
+    "health_status": {
+      "unique_values": 5,
+      "most_frequent": {
+        "value": "Good",
+        "count": 1787,
+        "percentage": 35.74
+      },
+      "value_distribution": [
+        {
+          "value": "Good",
+          "count": 1787,
+          "percentage": 35.74
+        },
+        {
+          "value": "Very Good",
+          "count": 1193,
+          "percentage": 23.86
+        },
+        {
+          "value": "Fair",
+          "count": 747,
+          "percentage": 14.94
+        },
+        {
+          "value": "Excellent",
+          "count": 735,
+          "percentage": 14.7
+        },
+        {
+          "value": "Poor",
+          "count": 538,
+          "percentage": 10.76
+        }
+      ]
+    }
+  },
+  "numeric_analysis": {
+    "bmi": {
+      "count": 4748,
+      "mean": 26.982455770850883,
+      "median": 27.0,
+      "std": 4.9530070696668895,
+      "min": 15.0,
+      "max": 46.7,
+      "q25": 23.5,
+      "q75": 30.4,
+      "outliers": {
+        "count": 12,
+        "percentage": 0.25,
+        "lower_bound": 13.150000000000002,
+        "upper_bound": 40.75
+      },
+      "skewness": 0.06083738378727699,
+      "kurtosis": -0.19254134503813525
+    },
+    "hours_sleep": {
+      "count": 4729,
+      "mean": 6.988813702685557,
+      "median": 7.0,
+      "std": 1.4985355403979865,
+      "min": 3.0,
+      "max": 12.0,
+      "q25": 6.0,
+      "q75": 8.0,
+      "outliers": {
+        "count": 18,
+        "percentage": 0.38,
+        "lower_bound": 3.0,
+        "upper_bound": 11.0
+      },
+      "skewness": 0.03858349232145186,
+      "kurtosis": -0.11776594998441858
+    },
+    "daily_calories": {
+      "count": 4750,
+      "mean": 2188.9387368421053,
+      "median": 2185.0,
+      "std": 505.82681037236085,
+      "min": 1000.0,
+      "max": 4000.0,
+      "q25": 1834.0,
+      "q75": 2533.0,
+      "outliers": {
+        "count": 13,
+        "percentage": 0.27,
+        "lower_bound": 785.5,
+        "upper_bound": 3581.5
+      },
+      "skewness": 0.08173529677805601,
+      "kurtosis": -0.17661508410751203
+    },
+    "drinks_per_week": {
+      "count": 4769,
+      "mean": 3.022017194380373,
+      "median": 3.0,
+      "std": 1.7436779497629504,
+      "min": 0.0,
+      "max": 11.0,
+      "q25": 2.0,
+      "q75": 4.0,
+      "outliers": {
+        "count": 64,
+        "percentage": 1.34,
+        "lower_bound": -1.0,
+        "upper_bound": 7.0
+      },
+      "skewness": 0.6003353826768746,
+      "kurtosis": 0.4677572875860294
+    },
+    "satisfaction_score": {
+      "count": 5000,
+      "mean": 5.521,
+      "median": 6.0,
+      "std": 2.8656589818539215,
+      "min": 1.0,
+      "max": 10.0,
+      "q25": 3.0,
+      "q75": 8.0,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": -4.5,
+        "upper_bound": 15.5
+      },
+      "skewness": -0.007481673574686913,
+      "kurtosis": -1.2193625684795422
+    }
+  },
+  "relationships": {
+    "correlations": {
+      "matrix": {
+        "bmi": {
+          "bmi": 1.0,
+          "hours_sleep": -0.036,
+          "daily_calories": -0.018,
+          "drinks_per_week": 0.023,
+          "satisfaction_score": -0.005
+        },
+        "hours_sleep": {
+          "bmi": -0.036,
+          "hours_sleep": 1.0,
+          "daily_calories": -0.009,
+          "drinks_per_week": 0.014,
+          "satisfaction_score": 0.021
+        },
+        "daily_calories": {
+          "bmi": -0.018,
+          "hours_sleep": -0.009,
+          "daily_calories": 1.0,
+          "drinks_per_week": 0.003,
+          "satisfaction_score": -0.015
+        },
+        "drinks_per_week": {
+          "bmi": 0.023,
+          "hours_sleep": 0.014,
+          "daily_calories": 0.003,
+          "drinks_per_week": 1.0,
+          "satisfaction_score": -0.018
+        },
+        "satisfaction_score": {
+          "bmi": -0.005,
+          "hours_sleep": 0.021,
+          "daily_calories": -0.015,
+          "drinks_per_week": -0.018,
+          "satisfaction_score": 1.0
+        }
+      },
+      "strong_correlations": []
+    }
+  }
+}

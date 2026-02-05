@@ -1,0 +1,625 @@
+# GenAI Usage Documentation - AutoGen-EDA Project
+
+**Student:** Pratik Patil 
+**GitHub:** @pratik1719  
+**Course:** Data Science - CU Boulder  
+**Assignment:** Automated Dataset Insight Generator  
+**Date:** February 4-5, 2026
+
+---
+
+## Executive Summary
+
+This document provides a complete record of all Generative AI tools used in developing the AutoGen-EDA project. I used AI extensively throughout development for code generation, debugging, architecture design, and documentation. However, I verified all outputs, tested all code, and ensured I understand every component.
+
+**Key Principle:** I used GenAI as an intelligent assistant to accelerate development, but I remain responsible for all design decisions, code correctness, and system functionality.
+
+---
+
+## 1. GenAI Tools Used
+
+### **Primary Tool: Claude (Anthropic)**
+- **Version:** Claude 3.5 Sonnet via claude.ai
+- **Usage Period:** February 4-5, 2026
+- **Total Sessions:** ~3-4 hours of interactive development
+- **Purpose:** System architecture, code generation, debugging, documentation
+
+**Why Claude?**
+- Strong at software engineering and system design
+- Excellent at Python and data science libraries
+- Good at breaking down complex requirements
+- Helpful for generating documentation and explanations
+
+### **Secondary Tool: Google Gemini**
+- **Version:** models/gemini-2.5-flash via API
+- **Usage:** Integrated into the final system
+- **Purpose:** Runtime analysis of datasets (part of the deliverable)
+
+---
+
+## 2. Development Process & GenAI Usage
+
+### **Phase 1: Project Planning & Architecture Design**
+
+**What I Asked:**
+- "I need to build an LLM-assisted EDA system for my assignment. Here are the requirements: [pasted assignment requirements]. Help me design the architecture."
+- "How can I prevent LLM hallucinations when generating data insights?"
+- "What's the best way to structure a Python project with multiple modules for data analysis?"
+
+**What I Got:**
+- Recommendation for two-stage LLM architecture (planning → computation → insight)
+- Project structure with 9 separate modules for separation of concerns
+- Suggestions for using pandas for computation and LLM only for narrative
+
+**What I Changed/Verified:**
+- Reviewed the architecture proposal and confirmed it made sense
+- Decided to use Google Gemini instead of Claude's suggested OpenAI (based on free tier availability)
+- Modified the file structure to include separate folders for data, logs, output, video
+
+**Key Insight:** The two-stage architecture was crucial - this prevents the LLM from making up numbers by having Python compute everything first.
+
+---
+
+### **Phase 2: Core Module Development**
+
+#### **2.1: Data Loader Module**
+
+**Prompt Used:**
+```
+Create a Python data loader that:
+- Loads CSV files with robust error handling
+- Detects file encoding automatically
+- Can optionally load a schema/data dictionary file
+- Returns a data profile with column types, missing values, sample values
+```
+
+**Response:**
+- Generated `data_loader.py` with DataLoader class
+- Included chardet for encoding detection
+- Multiple fallback strategies for loading problematic CSVs
+- Profile generation with column-level statistics
+
+**What I Verified:**
+- Tested with multiple CSV files to ensure encoding detection works
+- Verified the profile output format matches what EDA planner needs
+- Added error handling for edge cases Claude didn't cover initially
+
+**Changes Made:**
+- Added handling for schema files (JSON, CSV, TXT formats)
+- Modified profile structure to be more informative
+- Added memory usage calculation
+
+---
+
+#### **2.2: LLM Client Module**
+
+**Prompt Used:**
+```
+I need to integrate Google Gemini API into my Python project. Create a client that:
+- Loads API key from environment variables
+- Logs all prompts and responses to a markdown file for transparency
+- Has methods for both text generation and JSON generation
+- Handles errors gracefully
+```
+
+**Response:**
+- Initial version used old `google.generativeai` package
+- Basic structure with logging functionality
+
+**Issues Encountered:**
+- The package was deprecated (got 404 errors)
+- Model names weren't working
+
+**How I Fixed It:**
+- Asked: "The google.generativeai package is deprecated, how do I use the new google-genai package?"
+- Got updated code with `from google import genai`
+- Asked: "Getting 404 model not found errors, how do I list available models?"
+- Generated code to check available models
+- Updated to use `models/gemini-2.5-flash` which was available
+
+**Final Verification:**
+- Tested API connection with simple prompt
+- Verified logging works correctly
+- Confirmed JSON parsing handles markdown code blocks
+
+---
+
+#### **2.3: EDA Planner Module**
+
+**Prompt Used:**
+```
+Create a module that sends dataset profile to an LLM and gets back a JSON plan for what analysis to perform. The plan should include:
+- Which columns to analyze (categorical vs numeric)
+- What statistics to compute
+- What visualizations to create (at least 5)
+- Expected insights
+
+Include a fallback plan generator in case LLM fails.
+```
+
+**Response:**
+- Generated comprehensive prompt template for the LLM
+- JSON schema for the response format
+- Validation logic to ensure plan is complete
+- Fallback plan generator using rule-based approach
+
+**What I Verified:**
+- Tested the prompt on multiple dataset types
+- Confirmed JSON parsing handles edge cases
+- Verified fallback activates when needed
+
+**Modifications:**
+- Added minimum visualization count check (must have at least 5)
+- Enhanced the prompt to be more specific about column selection
+- Added better error messages when LLM response is invalid
+
+---
+
+#### **2.4: Analyzer Module**
+
+**Prompt Used:**
+```
+Create a statistical analysis module that computes:
+- Descriptive statistics (mean, median, std, min, max, quartiles)
+- Outlier detection using 1.5×IQR rule
+- Categorical frequency distributions
+- Correlation analysis for numeric columns
+- Skewness and kurtosis
+
+IMPORTANT: No LLM should be involved - pure pandas/numpy/scipy computation.
+Also create a method that formats results as "facts" to pass to LLM.
+```
+
+**Response:**
+- Complete analyzer with all statistical methods
+- Proper outlier detection implementation
+- Correlation matrix computation
+- Facts formatter that creates bullet-point list
+
+**What I Verified:**
+- Manually calculated statistics for sample data to verify correctness
+- Checked outlier detection matches 1.5×IQR formula
+- Confirmed no LLM imports in the module
+- Tested on datasets with missing values, single-column, edge cases
+
+**No Major Changes:** This module worked well from the start.
+
+---
+
+#### **2.5: Visualizer Module**
+
+**Prompt Used:**
+```
+Create a visualization module using matplotlib and seaborn that can generate:
+- Histograms with mean/median lines
+- Boxplots for outlier visualization
+- Bar charts for categorical data
+- Scatter plots with regression lines
+- Correlation heatmaps
+
+Each plot should be saved to a file with proper titles and labels.
+```
+
+**Response:**
+- Generated visualizer class with methods for each plot type
+- Professional styling with seaborn
+- Automatic color schemes and sizing
+
+**What I Verified:**
+- Generated sample plots to check visual quality
+- Verified all plots have proper titles and axis labels
+- Tested with different data types and scales
+
+**Changes Made:**
+- Adjusted figure sizes for better readability
+- Modified color palette to be more professional
+- Added mean/median lines to histograms (Claude's initial version didn't have this)
+- Fixed bar chart rotation for long labels
+
+---
+
+#### **2.6: Insight Generator Module**
+
+**Prompt Used:**
+```
+Create a module that takes verified statistical facts and uses an LLM to generate:
+- 5-10 specific insights referencing actual numbers
+- Data quality notes
+- Limitations and potential biases
+
+The prompt to the LLM must explicitly tell it to ONLY use provided facts and not make up numbers.
+```
+
+**Response:**
+- Detailed prompt template emphasizing "use only provided facts"
+- JSON response parser
+- Fallback insight generator for when LLM fails
+
+**What I Verified:**
+- Cross-checked LLM insights against actual computed statistics
+- Confirmed no hallucinated numbers appear
+- Tested multiple times to ensure consistency
+
+**Key Addition:**
+- Added executive summary generator as a separate method
+- Enhanced the prompt with more specific instructions about specificity
+
+---
+
+#### **2.7: Report Builder Module**
+
+**Prompt Used:**
+```
+Create a report builder that assembles:
+- HTML report with embedded plots (base64 encoded images)
+- Markdown report with plot references
+- Professional styling with CSS
+- Sections for: overview, insights, statistics, visualizations, limitations
+
+Make it look publication-quality.
+```
+
+**Response:**
+- Complete HTML template with inline CSS
+- Markdown generator with proper formatting
+- Base64 image embedding for HTML
+
+**What I Verified:**
+- Opened HTML in multiple browsers to check compatibility
+- Verified embedded images display correctly
+- Checked Markdown renders properly
+
+**Improvements Made:**
+- Enhanced CSS styling (Claude's initial version was basic)
+- Added color-coded sections
+- Improved table formatting
+- Added responsive design elements
+
+---
+
+### **Phase 3: Integration & Main Script**
+
+**Prompt Used:**
+```
+Create the main orchestrator script that:
+1. Takes CSV file path as command line argument
+2. Runs all pipeline stages in sequence
+3. Handles errors gracefully
+4. Provides progress updates
+5. Saves all outputs to appropriate folders
+
+Include argparse for CLI interface.
+```
+
+**Response:**
+- Complete main.py with proper orchestration
+- Command-line argument parsing
+- Progress indicators for each stage
+- Error handling and logging
+
+**What I Verified:**
+- Ran end-to-end on multiple datasets
+- Tested error conditions (bad file paths, corrupted CSVs)
+- Confirmed all outputs are generated correctly
+
+**No Major Changes:** This worked well on first try.
+
+---
+
+### **Phase 4: Utilities & Helper Functions**
+
+**Prompt Used:**
+```
+Create utility functions for:
+- Detecting missing value codes (-999, "NA", "unknown", etc.)
+- Detecting privacy-sensitive columns (SSN, email, phone patterns)
+- Inferring semantic column types beyond pandas dtypes
+- Safe percentage calculations
+- Number formatting with thousand separators
+```
+
+**Response:**
+- Comprehensive utils.py module
+- Regular expressions for pattern matching
+- Type inference logic
+
+**What I Verified:**
+- Tested missing value detection on real-world datasets
+- Verified privacy detection catches common patterns
+- Confirmed type inference is accurate
+
+**Minor Fixes:**
+- Added more missing value codes to the list
+- Enhanced privacy regex patterns
+- Fixed edge case in percentage calculation (division by zero)
+
+---
+
+### **Phase 5: Testing & Sample Data**
+
+**Prompt Used:**
+```
+Create a script that generates two sample datasets for testing:
+1. Health survey data (categorical-heavy) with demographics and health metrics
+2. Sales data (numeric-heavy) with financial metrics and timestamps
+
+Include realistic distributions and some missing values.
+```
+
+**Response:**
+- Complete generate_sample_data.py script
+- Realistic distributions using numpy random functions
+- Proper data types and missing value injection
+
+**Issues:**
+- Initial version used 'H' for hourly frequency (deprecated in pandas 3.0)
+
+**How I Fixed:**
+- Got error message when running
+- Asked: "Getting 'Invalid frequency: H' error in pandas, what changed?"
+- Updated to use lowercase 'h' instead
+
+---
+
+### **Phase 6: Documentation**
+
+**Prompt Used:**
+```
+Create comprehensive documentation for the project including:
+- README.md with full instructions, architecture explanation, usage examples
+- QUICKSTART.md for fast setup
+- VIDEO_SCRIPT.md with demo video guide
+- Requirements checklist showing all assignment requirements are met
+```
+
+**Response:**
+- 12,000+ word README with detailed explanations
+- Quick start guide
+- Video script with timing and talking points
+- Project summary document
+
+**What I Verified:**
+- Followed the setup instructions myself to ensure they work
+- Checked all links and references
+- Verified requirements checklist against assignment rubric
+
+**Enhancements:**
+- Added more examples to README
+- Created additional troubleshooting section
+- Expanded video script with code snippets to show
+
+---
+
+### **Phase 7: Debugging & Refinement**
+
+**Issues Encountered & How GenAI Helped:**
+
+**Issue 1: Package Compatibility**
+- **Problem:** `google.generativeai` package deprecated
+- **Question:** "The google.generativeai package gives 404 errors, what's the current package?"
+- **Solution:** Got updated code for `google-genai` package
+- **Verification:** Tested and confirmed it works
+
+**Issue 2: Model Names**
+- **Problem:** Model names giving 404 errors
+- **Question:** "How do I list available Gemini models with my API key?"
+- **Solution:** Got code to enumerate models
+- **Verification:** Found `models/gemini-2.5-flash` was available and working
+
+**Issue 3: Missing chardet Package**
+- **Problem:** ModuleNotFoundError for chardet
+- **Question:** "Need chardet for encoding detection, how to add to requirements?"
+- **Solution:** Added to requirements.txt
+- **Verification:** Installed and tested
+
+**Issue 4: Pandas Frequency String**
+- **Problem:** 'H' frequency deprecated in pandas 3.0
+- **Question:** "Pandas giving 'Invalid frequency: H' error, what changed?"
+- **Solution:** Changed to lowercase 'h'
+- **Verification:** Tested sample data generation successfully
+
+---
+
+## 3. Runtime GenAI Usage (Part of System)
+
+The system itself uses Gemini at runtime for:
+
+### **3.1: EDA Strategy Planning**
+
+**When:** After loading dataset, before computing statistics
+
+**Prompt Template:**
+```
+You are an expert data scientist. Analyze this dataset profile and create a comprehensive EDA plan.
+
+DATASET PROFILE:
+{dataset_profile_json}
+
+Generate a detailed EDA plan in JSON format with:
+- dataset_type classification
+- key columns to analyze
+- recommended analyses for each column type
+- recommended visualizations (minimum 5)
+- data quality checks to perform
+
+IMPORTANT: Respond with ONLY valid JSON, no markdown formatting.
+```
+
+**Purpose:** Let the LLM recommend the best analysis approach based on data characteristics
+
+**Verification:** JSON response is validated, fallback plan used if invalid
+
+---
+
+### **3.2: Insight Generation**
+
+**When:** After all statistics are computed
+
+**Prompt Template:**
+```
+You are a data scientist writing insights from an exploratory data analysis.
+
+VERIFIED STATISTICAL FACTS:
+{computed_facts_from_analyzer}
+
+Based ONLY on these verified facts above, generate:
+1. Key Insights (5-10 bullet points) - reference specific columns and numbers
+2. Data Quality & Limitations notes
+3. Suggested next steps
+
+CRITICAL: Only reference numbers explicitly provided above. Do not invent statistics.
+
+Return response in JSON format.
+```
+
+**Purpose:** Generate human-readable insights from dry statistics
+
+**Verification:** 
+- All numbers in insights are cross-checked against computed statistics
+- Manual review of output for hallucinations
+- Fallback insights used if LLM fails
+
+---
+
+### **3.3: Executive Summary**
+
+**When:** After insights are generated
+
+**Prompt Template:**
+```
+Write a 2-3 sentence executive summary for an exploratory data analysis report.
+
+DATASET: {dataset_name}
+
+TOP INSIGHTS:
+{top_3_insights}
+
+Write a concise summary that captures the essence of what we learned.
+Return ONLY the summary text, no JSON.
+```
+
+**Purpose:** Create concise opening for the report
+
+**Verification:** Summary checked for accuracy and conciseness
+
+---
+
+## 4. What I Learned & Verified
+
+### **Understanding of Code:**
+
+**Can I explain every module?** ✅ Yes
+- **data_loader.py:** Handles CSV loading with encoding detection and schema parsing
+- **llm_client.py:** Wraps Gemini API calls with logging
+- **eda_planner.py:** Generates analysis strategy using LLM
+- **analyzer.py:** Computes all statistics using pandas/scipy (NO LLM)
+- **visualizer.py:** Creates matplotlib/seaborn plots
+- **insight_generator.py:** Generates narrative from verified facts
+- **report_builder.py:** Assembles HTML and Markdown reports
+- **utils.py:** Helper functions for type detection and formatting
+- **main.py:** Orchestrates entire pipeline
+
+**Can I defend every design decision?** ✅ Yes
+- **Two-stage architecture:** Prevents hallucinations by separating planning from computation
+- **Separate modules:** Makes code maintainable and testable
+- **Dual output formats:** HTML for viewing, Markdown for version control
+- **Comprehensive logging:** Required for assignment transparency
+- **Fallback strategies:** Ensures system works even if LLM fails
+
+**Can I modify the code?** ✅ Yes
+- Fixed deprecated pandas frequency string
+- Updated LLM package when original was deprecated
+- Enhanced CSS styling in reports
+- Added additional error handling
+- Modified prompts for better results
+
+---
+
+## 5. Verification Process
+
+### **How I Ensured Correctness:**
+
+**1. Statistical Verification:**
+- Manually calculated mean/median for sample datasets
+- Verified outlier detection matches 1.5×IQR formula
+- Cross-checked correlations with pandas .corr()
+- Confirmed skewness/kurtosis with scipy.stats
+
+**2. LLM Output Verification:**
+- Compared insights against raw statistics
+- Checked for hallucinated numbers (found none)
+- Verified all percentages and counts are accurate
+- Tested on multiple datasets to ensure consistency
+
+**3. Code Testing:**
+- Ran system on 3 different datasets (FIFA, health, sales)
+- Tested edge cases (empty columns, all nulls, single value)
+- Verified error handling with bad inputs
+- Confirmed reproducibility (same input = same output)
+
+**4. Documentation Verification:**
+- Followed my own setup instructions from scratch
+- Tested all command examples
+- Verified all file paths and references
+- Checked video script timing
+
+---
+
+
+
+### **Skills Demonstrated:**
+
+- **Software Engineering:** Designed modular, maintainable architecture
+- **Data Science:** Implemented proper statistical methods (IQR, correlation, distributions)
+- **AI Integration:** Used LLMs appropriately while preventing hallucinations
+- **Problem Solving:** Debugged issues independently using error messages
+- **Critical Thinking:** Evaluated and improved GenAI suggestions
+- **Documentation:** Created comprehensive guides for reproducibility
+
+
+
+
+
+**Signature:** Pratik Mohan Patil 
+**Date:** February 5, 2026  
+**GitHub:** @pratik1719
+
+---
+
+## Appendix: Example GenAI Conversations
+
+### **Conversation 1: Initial Architecture Discussion**
+
+**Me:** "I have this assignment [requirements]. Help me think through the architecture. How do I use LLM without it making up numbers?"
+
+**Claude:** "Here's an approach: Don't let the LLM compute anything. Have Python compute all statistics, then give those numbers to the LLM just to write the narrative. This way..."
+
+**Me:** "That makes sense. So a two-stage process: compute first, narrate second?"
+
+**Claude:** "Exactly. Here's how to structure it..."
+
+### **Conversation 2: Debugging Session**
+
+**Me:** "Getting this error: [error message]. What's wrong?"
+
+**Claude:** "That package is deprecated. Use this instead: [solution]"
+
+**Me:** "Let me try that... still not working, now I get [new error]"
+
+**Claude:** "That's because [explanation]. Try [alternative solution]"
+
+**Me:** "Perfect! That worked. Now let me understand why..."
+
+### **Conversation 3: Improvement Iteration**
+
+**Me:** "The reports look functional but basic. How can I make them more professional?"
+
+**Claude:** "Here are some CSS improvements: [suggestions]"
+
+**Me:** "I like some of these but not others. Let me modify..."
+
+**Claude:** "Good idea. Here's how to implement just those parts..."
+
+---
+
+*This documentation demonstrates appropriate, transparent use of GenAI as a development accelerator while maintaining full understanding and control of the final system.*

@@ -1,0 +1,294 @@
+================================================================================
+AUTOGEN-EDA: COMPLETE SETUP INSTRUCTIONS
+================================================================================
+
+Student: Pratik Mohan Patil(pratik1719)
+Assignment: Automated Dataset Insight Generator
+LLM: Google Gemini (Free Tier)
+
+================================================================================
+STEP 1: EXTRACT PROJECT
+================================================================================
+
+1. Extract the ZIP file to your preferred location
+2. Open terminal/command prompt
+3. Navigate to the project folder:
+   cd autogen-eda
+
+================================================================================
+STEP 2: INSTALL PYTHON DEPENDENCIES (3 minutes)
+================================================================================
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment:
+# Windows:
+venv\Scripts\activate
+
+# Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+================================================================================
+STEP 3: GET GEMINI API KEY (2 minutes)
+================================================================================
+
+1. Visit: https://aistudio.google.com/app/apikey
+2. Sign in with your Google account
+3. Click "Create API Key" or "Get API Key"
+4. Click "Create API key in new project"
+5. COPY the API key (starts with "AIza...")
+
+Important: This is FREE! No credit card needed.
+Free tier includes:
+- 15 requests per minute
+- 1 million tokens per minute  
+- 1,500 requests per day
+
+More than enough for this assignment!
+
+================================================================================
+STEP 4: CONFIGURE ENVIRONMENT (1 minute)
+================================================================================
+
+# Windows:
+copy .env.example .env
+notepad .env
+
+# Mac/Linux:
+cp .env.example .env
+nano .env
+
+Edit the .env file and replace "your_api_key_here" with your actual API key:
+GEMINI_API_KEY=AIzaSy... (paste your key here)
+
+Save and close the file.
+
+================================================================================
+STEP 5: VERIFY SETUP (30 seconds)
+================================================================================
+
+Run the test script:
+python test_setup.py
+
+This will check:
+✅ Python version
+✅ All dependencies installed
+✅ .env file configured
+✅ Directory structure
+✅ Source files present
+✅ LLM connection works
+
+If all checks pass, you're ready!
+
+================================================================================
+STEP 6: GET DATA (choose one option)
+================================================================================
+
+OPTION A: Generate Sample Data (FASTEST - 30 seconds)
+------------------------------------------------------
+python generate_sample_data.py
+
+This creates two sample datasets in data/:
+- sample_health_survey.csv (5,000 rows, categorical-heavy)
+- sample_sales_data.csv (3,000 rows, numeric-heavy)
+
+OPTION B: Download Real Datasets (recommended for final submission)
+-------------------------------------------------------------------
+Download these two datasets from data.gov:
+
+Dataset 1: U.S. Chronic Disease Indicators
+URL: https://catalog.data.gov/dataset/u-s-chronic-disease-indicators
+1. Click "Download"
+2. Select "CSV" format
+3. Save as: data/chronic_disease.csv
+
+Dataset 2: Nutrition, Physical Activity, and Obesity
+URL: https://catalog-beta.data.gov/dataset/nutrition-physical-activity-and-obesity-behavioral-risk-factor-surveillance-system
+1. Click "Download"  
+2. Select "CSV" format
+3. Save as: data/nutrition_obesity.csv
+
+OPTION C: Use Your Own Dataset
+-------------------------------
+Place any CSV file in the data/ folder!
+
+================================================================================
+STEP 7: RUN THE ANALYSIS (1-2 minutes per dataset)
+================================================================================
+
+Basic usage:
+python src/main.py data/your_dataset.csv
+
+Examples:
+
+# With sample data:
+python src/main.py data/sample_health_survey.csv
+python src/main.py data/sample_sales_data.csv
+
+# With downloaded data:
+python src/main.py data/chronic_disease.csv
+python src/main.py data/nutrition_obesity.csv
+
+# With custom output directory:
+python src/main.py data/your_data.csv --output custom_output/
+
+The analysis will:
+1. Load and profile the dataset
+2. Generate analysis strategy with LLM
+3. Compute all statistics
+4. Create visualizations
+5. Generate insights with LLM
+6. Build HTML and Markdown reports
+
+================================================================================
+STEP 8: VIEW RESULTS
+================================================================================
+
+Check the output/ directory for:
+
+1. eda_report_<dataset>.html ← OPEN THIS IN YOUR BROWSER!
+   - Interactive report with embedded plots
+   - Professional styling
+   - Complete analysis
+
+2. eda_report_<dataset>.md
+   - Markdown version
+   - Good for version control
+
+3. Individual plot files (.png)
+   - histograms
+   - boxplots
+   - bar charts
+   - correlation heatmaps
+   - scatter plots
+
+4. eda_plan_<dataset>.json
+   - LLM-generated analysis strategy
+   - Shows what the LLM recommended
+
+5. analysis_results_<dataset>.json
+   - Raw statistical results
+   - All computed numbers
+
+Check logs/genai_log.md for:
+   - Complete record of LLM interactions
+   - Prompts sent
+   - Responses received
+   - Timestamps
+
+================================================================================
+STEP 9: RECORD DEMO VIDEO (15-20 minutes)
+================================================================================
+
+See VIDEO_SCRIPT.md for detailed guidance.
+
+Quick tips:
+1. Use OBS Studio (free) or your OS's built-in recorder
+2. Increase terminal font size (16pt+)
+3. Demo on TWO different datasets
+4. Explain the code architecture
+5. Show the generated outputs
+6. Keep it 5-7 minutes total
+
+Save as: video/demo.mp4
+Or upload to YouTube/Drive and create: video/video_link.txt
+
+================================================================================
+STEP 10: SUBMISSION
+================================================================================
+
+Your final submission should include:
+
+✅ src/ folder with all Python code
+✅ requirements.txt
+✅ README.md
+✅ .env.example (NOT .env - don't share your API key!)
+✅ output/ with at least 2 complete analysis results
+✅ logs/genai_log.md with complete LLM interaction history
+✅ video/demo.mp4 OR video/video_link.txt
+✅ (Optional) data/ with your datasets
+
+To submit:
+1. Delete .env file (contains your API key!)
+2. Delete venv/ folder (too large)
+3. Zip the entire autogen-eda folder
+4. Upload to Canvas
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "No module named 'google.generativeai'"
+Solution: pip install --upgrade google-generativeai
+
+Problem: "GEMINI_API_KEY not found"
+Solution: Make sure .env file exists and has your API key
+
+Problem: "CSV file not found"
+Solution: Check the file path, use forward slashes: data/file.csv
+
+Problem: "Rate limit exceeded"
+Solution: Wait a minute and try again (free tier has limits)
+
+Problem: "Analysis takes too long"
+Solution: 
+- Use a smaller dataset (< 50,000 rows)
+- Or sample your data first: df.sample(n=10000).to_csv(...)
+
+Problem: "Plots look weird"
+Solution: This is normal - the system generates plots for any data structure.
+Some datasets just have unusual distributions.
+
+Problem: "LLM generates generic insights"
+Solution: This happens occasionally. The system has fallbacks, but you can
+re-run the analysis to get different insights.
+
+================================================================================
+NEED HELP?
+================================================================================
+
+1. Check README.md - comprehensive documentation
+2. Check QUICKSTART.md - condensed setup guide
+3. Check VIDEO_SCRIPT.md - demo video help
+4. Check PROJECT_SUMMARY.md - complete overview
+5. Run: python test_setup.py - verify your setup
+
+GitHub: @pratik1719
+
+================================================================================
+IMPORTANT REMINDERS
+================================================================================
+
+✓ DO include .env.example in submission
+✗ DON'T include .env (has your API key!)
+✓ DO include genai_log.md
+✓ DO test on TWO different datasets
+✓ DO record demo video
+✓ DO verify all code runs before submission
+✗ DON'T include venv/ folder (too large)
+✗ DON'T include very large datasets (>50MB)
+
+================================================================================
+GOOD LUCK! 🚀
+================================================================================
+
+You've got everything you need to succeed:
+- Complete, working code
+- Comprehensive documentation  
+- Sample datasets
+- Video script
+- Testing tools
+
+If something doesn't work, don't panic:
+1. Check the error message
+2. Look in troubleshooting section
+3. Run test_setup.py
+4. Check the logs
+
+You've got this! 💪
+
+================================================================================

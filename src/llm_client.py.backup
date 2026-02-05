@@ -1,0 +1,146 @@
+"""
+LLM Client for Google Gemini API
+Handles all interactions with the Gemini model
+"""
+import os
+import json
+from typing import Optional, Dict, Any
+from datetime import datetime
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+
+class LLMClient:
+    """Client for interacting with Google Gemini API"""
+    
+    def __init__(self, log_file: str = "logs/genai_log.md"):
+        """
+        Initialize Gemini client.
+        
+        Args:
+            log_file: Path to save prompt/response log
+        """
+        load_dotenv()
+        
+        self.api_key = os.getenv('GEMINI_API_KEY')
+        if not self.api_key:
+            raise ValueError(
+                "GEMINI_API_KEY not found in environment variables. "
+                "Please create a .env file with your API key."
+            )
+        
+        genai.configure(api_key=self.api_key)
+        
+        # Use gemini-1.5-flash for speed and cost-effectiveness
+        # Can switch to gemini-1.5-pro for more complex reasoning
+        self.model_name = os.getenv('GEMINI_MODEL', 'gemini-1.5-flash')
+        self.model = genai.GenerativeModel(self.model_name)
+        
+        self.log_file = log_file
+        self._initialize_log()
+    
+    def _initialize_log(self):
+        """Initialize the GenAI prompt log file."""
+        os.makedirs(os.path.dirname(self.log_file), exist_ok=True)
+        
+        if not os.path.exists(self.log_file):
+            with open(self.log_file, 'w') as f:
+                f.write("# GenAI Prompt Log\n\n")
+                f.write(f"**Project:** AutoGen-EDA - LLM-Assisted Dataset Analysis\n\n")
+                f.write(f"**LLM Used:** Google Gemini ({self.model_name})\n\n")
+                f.write(f"**Created:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+                f.write("---\n\n")
+    
+    def _log_interaction(self, prompt: str, response: str, purpose: str):
+        """Log prompt and response to file."""
+        with open(self.log_file, 'a') as f:
+            f.write(f"## Interaction: {purpose}\n\n")
+            f.write(f"**Timestamp:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            f.write(f"### Prompt:\n```\n{prompt}\n```\n\n")
+            f.write(f"### Response:\n```\n{response}\n```\n\n")
+            f.write("---\n\n")
+    
+    def generate(self, prompt: str, purpose: str = "General", 
+                 temperature: float = 0.7) -> str:
+        """
+        Generate response from Gemini.
+        
+        Args:
+            prompt: The prompt to send to Gemini
+            purpose: Description of what this prompt is for (for logging)
+            temperature: Sampling temperature (0.0 to 1.0)
+        
+        Returns:
+            Generated text response
+        """
+        try:
+            generation_config = genai.types.GenerationConfig(
+                temperature=temperature,
+                max_output_tokens=8000,
+            )
+            
+            response = self.model.generate_content(
+                prompt,
+                generation_config=generation_config
+            )
+            
+            response_text = response.text
+            
+            # Log the interaction
+            self._log_interaction(prompt, response_text, purpose)
+            
+            return response_text
+        
+        except Exception as e:
+            error_msg = f"Error generating response: {str(e)}"
+            print(f"❌ {error_msg}")
+            self._log_interaction(prompt, f"ERROR: {error_msg}", purpose)
+            raise
+    
+    def generate_json(self, prompt: str, purpose: str = "JSON Generation") -> Dict[str, Any]:
+        """
+        Generate JSON response from Gemini.
+        
+        Args:
+            prompt: The prompt (should request JSON format)
+            purpose: Description of what this prompt is for
+        
+        Returns:
+            Parsed JSON dictionary
+        """
+        # Add explicit JSON instruction
+        json_prompt = f"{prompt}\n\nIMPORTANT: Respond with ONLY valid JSON, no markdown formatting or extra text."
+        
+        response_text = self.generate(json_prompt, purpose, temperature=0.3)
+        
+        # Clean response (remove markdown code blocks if present)
+        cleaned = response_text.strip()
+        if cleaned.startswith('```json'):
+            cleaned = cleaned[7:]
+        elif cleaned.startswith('```'):
+            cleaned = cleaned[3:]
+        if cleaned.endswith('```'):
+            cleaned = cleaned[:-3]
+        cleaned = cleaned.strip()
+        
+        try:
+            return json.loads(cleaned)
+        except json.JSONDecodeError as e:
+            print(f"❌ Failed to parse JSON response: {e}")
+            print(f"Raw response: {cleaned[:200]}...")
+            # Return a fallback structure
+            return {"error": "Failed to parse JSON", "raw_response": cleaned}
+
+
+# Test function
+if __name__ == "__main__":
+    try:
+        client = LLMClient()
+        response = client.generate(
+            "Say hello and confirm you're working!",
+            purpose="Connection Test"
+        )
+        print(f"✅ LLM Client initialized successfully!")
+        print(f"Response: {response[:100]}...")
+    except Exception as e:
+        print(f"❌ Error: {e}")

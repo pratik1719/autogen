@@ -1,0 +1,213 @@
+{
+  "dataset_type": "mixed",
+  "key_columns": {
+    "categorical": [
+      "state",
+      "age_group",
+      "gender",
+      "education_level",
+      "health_status",
+      "has_chronic_disease",
+      "smoker",
+      "exercise_level"
+    ],
+    "numeric": [
+      "bmi",
+      "hours_sleep",
+      "daily_calories",
+      "drinks_per_week"
+    ],
+    "datetime": [],
+    "potential_target": "satisfaction_score"
+  },
+  "recommended_analyses": {
+    "categorical": [
+      {
+        "column": "state",
+        "analysis": "frequency_distribution",
+        "reason": "Understand geographical representation and potential regional differences in the data."
+      },
+      {
+        "column": "age_group",
+        "analysis": "frequency_distribution",
+        "reason": "Examine the age demographic breakdown to identify prominent age segments."
+      },
+      {
+        "column": "gender",
+        "analysis": "frequency_distribution",
+        "reason": "Check for gender balance and distribution within the dataset."
+      },
+      {
+        "column": "education_level",
+        "analysis": "frequency_distribution",
+        "reason": "Understand the educational background of the population and its distribution."
+      },
+      {
+        "column": "health_status",
+        "analysis": "frequency_distribution",
+        "reason": "Assess the self-reported health status distribution to gauge overall population health perception."
+      },
+      {
+        "column": "exercise_level",
+        "analysis": "frequency_distribution",
+        "reason": "Analyze exercise habits, paying close attention to the high null percentage (30.16%) to understand its impact."
+      },
+      {
+        "column": "has_chronic_disease",
+        "analysis": "frequency_distribution",
+        "reason": "Determine the prevalence of chronic diseases (0 or 1) in the dataset."
+      },
+      {
+        "column": "smoker",
+        "analysis": "frequency_distribution",
+        "reason": "Understand smoking habits within the population (Yes/No/Former)."
+      }
+    ],
+    "numeric": [
+      {
+        "column": "bmi",
+        "analysis": "distribution_outliers_summary",
+        "reason": "Understand the distribution shape, central tendency, spread, and identify potential outliers for Body Mass Index, considering its 5.04% nulls."
+      },
+      {
+        "column": "hours_sleep",
+        "analysis": "distribution_outliers_summary",
+        "reason": "Analyze sleep patterns, identify typical ranges, and detect anomalies or outliers, considering its 5.42% nulls."
+      },
+      {
+        "column": "daily_calories",
+        "analysis": "distribution_outliers_summary",
+        "reason": "Examine caloric intake distribution, identify typical ranges, and detect unusual values, considering its 5.0% nulls."
+      },
+      {
+        "column": "drinks_per_week",
+        "analysis": "distribution_outliers_summary",
+        "reason": "Understand alcohol consumption patterns, typical frequencies, and identify outliers, considering its 4.62% nulls."
+      },
+      {
+        "column": "satisfaction_score",
+        "analysis": "distribution_outliers_summary",
+        "reason": "Analyze the distribution of the potential target variable (satisfaction score 1-10) to understand common satisfaction levels and spread."
+      }
+    ],
+    "relationships": [
+      {
+        "columns": [
+          "satisfaction_score",
+          "age_group"
+        ],
+        "analysis": "group_statistics",
+        "reason": "Investigate how the average satisfaction score varies across different age groups."
+      },
+      {
+        "columns": [
+          "satisfaction_score",
+          "education_level"
+        ],
+        "analysis": "group_statistics",
+        "reason": "Explore the relationship between educational attainment and reported satisfaction levels."
+      },
+      {
+        "columns": [
+          "satisfaction_score",
+          "health_status"
+        ],
+        "analysis": "group_statistics",
+        "reason": "Determine if self-reported health status has a significant impact on satisfaction scores."
+      },
+      {
+        "columns": [
+          "satisfaction_score",
+          "bmi"
+        ],
+        "analysis": "correlation",
+        "reason": "Assess the linear relationship between BMI and the satisfaction score."
+      },
+      {
+        "columns": [
+          "satisfaction_score",
+          "hours_sleep"
+        ],
+        "analysis": "correlation",
+        "reason": "Examine the relationship between the number of hours slept and overall satisfaction."
+      },
+      {
+        "columns": [
+          "bmi",
+          "daily_calories"
+        ],
+        "analysis": "correlation",
+        "reason": "Understand the relationship between Body Mass Index and daily caloric intake."
+      },
+      {
+        "columns": [
+          "has_chronic_disease",
+          "health_status"
+        ],
+        "analysis": "cross_tabulation",
+        "reason": "Analyze the co-occurrence and relationship between having a chronic disease and self-reported health status."
+      }
+    ]
+  },
+  "recommended_visualizations": [
+    {
+      "type": "histogram",
+      "column": "satisfaction_score",
+      "title": "Distribution of Satisfaction Score",
+      "reason": "To visualize the overall distribution of the target variable and identify common satisfaction levels."
+    },
+    {
+      "type": "boxplot",
+      "column": "bmi",
+      "title": "BMI Distribution and Outliers",
+      "reason": "To visualize the spread, central tendency, and identify potential outliers in Body Mass Index, a key health metric."
+    },
+    {
+      "type": "bar",
+      "column": "age_group",
+      "title": "Frequency Distribution of Age Groups",
+      "reason": "To clearly show the demographic composition of the dataset by age."
+    },
+    {
+      "type": "correlation_heatmap",
+      "columns": [
+        "bmi",
+        "hours_sleep",
+        "daily_calories",
+        "drinks_per_week",
+        "satisfaction_score"
+      ],
+      "title": "Correlation Matrix of Numeric Variables",
+      "reason": "To identify linear relationships and potential multicollinearity between all numeric features at a glance."
+    },
+    {
+      "type": "boxplot",
+      "x": "education_level",
+      "y": "satisfaction_score",
+      "title": "Satisfaction Score by Education Level",
+      "reason": "To visually explore how satisfaction scores vary across different educational backgrounds, highlighting potential group differences."
+    },
+    {
+      "type": "bar",
+      "column": "exercise_level",
+      "title": "Distribution of Exercise Level (including missing values)",
+      "reason": "To visualize the frequency of different exercise levels and clearly show the proportion of missing values, which is significant."
+    }
+  ],
+  "data_quality_checks": [
+    "check_duplicates",
+    "check_high_missing_columns",
+    "check_constant_columns",
+    "check_data_types",
+    "check_range_violations_for_numeric_columns"
+  ],
+  "expected_insights": [
+    "Overall distribution patterns, central tendencies, and spread for key numeric variables (e.g., BMI, sleep hours, daily calories, satisfaction score).",
+    "Identification of outliers and anomalies in numeric features that might require special handling or further investigation.",
+    "Demographic composition of the dataset based on categorical variables (e.g., age groups, gender, states, education levels).",
+    "Prevalence of chronic diseases, smoking habits, and self-reported health status within the population.",
+    "Impact and patterns of missing data, especially for 'exercise_level', to inform imputation strategies or decision-making.",
+    "Relationships and correlations between health-related metrics (BMI, sleep, calories, drinks) and 'satisfaction_score' or 'has_chronic_disease'.",
+    "How various categorical factors (e.g., age, education, health status) influence or are associated with the 'satisfaction_score'."
+  ]
+}

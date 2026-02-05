@@ -1,0 +1,684 @@
+{
+  "overview": {
+    "total_rows": 110880,
+    "total_columns": 33,
+    "total_cells": 3659040,
+    "memory_usage_mb": 155.57929706573486,
+    "duplicate_rows": 0,
+    "column_types": {
+      "YearStart": "numeric",
+      "YearEnd": "numeric",
+      "LocationAbbr": "categorical",
+      "LocationDesc": "categorical",
+      "Datasource": "categorical",
+      "Class": "categorical",
+      "Topic": "categorical",
+      "Question": "categorical",
+      "Data_Value_Unit": "categorical",
+      "Data_Value_Type": "categorical",
+      "Data_Value": "numeric",
+      "Data_Value_Alt": "numeric",
+      "Data_Value_Footnote_Symbol": "categorical",
+      "Data_Value_Footnote": "categorical",
+      "Low_Confidence_Limit": "numeric",
+      "High_Confidence_Limit ": "numeric",
+      "Sample_Size": "numeric",
+      "Total": "categorical",
+      "Age(years)": "categorical",
+      "Education": "categorical",
+      "Sex": "categorical",
+      "Income": "categorical",
+      "Race/Ethnicity": "categorical",
+      "GeoLocation": "categorical",
+      "ClassID": "categorical",
+      "TopicID": "categorical",
+      "QuestionID": "categorical",
+      "DataValueTypeID": "categorical",
+      "LocationID": "numeric",
+      "StratificationCategory1": "categorical",
+      "Stratification1": "categorical",
+      "StratificationCategoryId1": "categorical",
+      "StratificationID1": "categorical"
+    }
+  },
+  "data_quality": {
+    "missing_by_column": {
+      "YearStart": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "YearEnd": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "LocationAbbr": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "LocationDesc": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Datasource": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Class": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Topic": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Question": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Data_Value_Unit": {
+        "count": 106260,
+        "percentage": 95.83
+      },
+      "Data_Value_Type": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Data_Value": {
+        "count": 13214,
+        "percentage": 11.92
+      },
+      "Data_Value_Alt": {
+        "count": 13214,
+        "percentage": 11.92
+      },
+      "Data_Value_Footnote_Symbol": {
+        "count": 97666,
+        "percentage": 88.08
+      },
+      "Data_Value_Footnote": {
+        "count": 97666,
+        "percentage": 88.08
+      },
+      "Low_Confidence_Limit": {
+        "count": 13214,
+        "percentage": 11.92
+      },
+      "High_Confidence_Limit ": {
+        "count": 13214,
+        "percentage": 11.92
+      },
+      "Sample_Size": {
+        "count": 13214,
+        "percentage": 11.92
+      },
+      "Total": {
+        "count": 106920,
+        "percentage": 96.43
+      },
+      "Age(years)": {
+        "count": 87120,
+        "percentage": 78.57
+      },
+      "Education": {
+        "count": 95040,
+        "percentage": 85.71
+      },
+      "Sex": {
+        "count": 102960,
+        "percentage": 92.86
+      },
+      "Income": {
+        "count": 83160,
+        "percentage": 75.0
+      },
+      "Race/Ethnicity": {
+        "count": 79200,
+        "percentage": 71.43
+      },
+      "GeoLocation": {
+        "count": 2016,
+        "percentage": 1.82
+      },
+      "ClassID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "TopicID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "QuestionID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "DataValueTypeID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "LocationID": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "StratificationCategory1": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Stratification1": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "StratificationCategoryId1": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "StratificationID1": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "high_missing_columns": [
+      {
+        "column": "Data_Value_Unit",
+        "missing_pct": 95.83
+      },
+      {
+        "column": "Data_Value_Footnote_Symbol",
+        "missing_pct": 88.08
+      },
+      {
+        "column": "Data_Value_Footnote",
+        "missing_pct": 88.08
+      },
+      {
+        "column": "Total",
+        "missing_pct": 96.43
+      },
+      {
+        "column": "Age(years)",
+        "missing_pct": 78.57
+      },
+      {
+        "column": "Education",
+        "missing_pct": 85.71
+      },
+      {
+        "column": "Sex",
+        "missing_pct": 92.86
+      },
+      {
+        "column": "Income",
+        "missing_pct": 75.0
+      },
+      {
+        "column": "Race/Ethnicity",
+        "missing_pct": 71.43
+      }
+    ],
+    "constant_columns": [
+      "Datasource",
+      "Data_Value_Unit",
+      "Data_Value_Type",
+      "Data_Value_Footnote_Symbol",
+      "Data_Value_Footnote",
+      "Total",
+      "DataValueTypeID"
+    ],
+    "high_cardinality_columns": []
+  },
+  "categorical_analysis": {
+    "LocationAbbr": {
+      "unique_values": 55,
+      "most_frequent": {
+        "value": "AL",
+        "count": 2016,
+        "percentage": 1.82
+      },
+      "value_distribution": [
+        {
+          "value": "AL",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "AK",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "AZ",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "AR",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "CA",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "CO",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "CT",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "DE",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "DC",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "FL",
+          "count": 2016,
+          "percentage": 1.82
+        }
+      ]
+    },
+    "LocationDesc": {
+      "unique_values": 55,
+      "most_frequent": {
+        "value": "Alabama",
+        "count": 2016,
+        "percentage": 1.82
+      },
+      "value_distribution": [
+        {
+          "value": "Alabama",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Alaska",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Arizona",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Arkansas",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "California",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Colorado",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Connecticut",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Delaware",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "District of Columbia",
+          "count": 2016,
+          "percentage": 1.82
+        },
+        {
+          "value": "Florida",
+          "count": 2016,
+          "percentage": 1.82
+        }
+      ]
+    },
+    "Datasource": {
+      "unique_values": 1,
+      "most_frequent": {
+        "value": "Behavioral Risk Factor Surveillance System",
+        "count": 110880,
+        "percentage": 100.0
+      },
+      "value_distribution": [
+        {
+          "value": "Behavioral Risk Factor Surveillance System",
+          "count": 110880,
+          "percentage": 100.0
+        }
+      ]
+    },
+    "Class": {
+      "unique_values": 3,
+      "most_frequent": {
+        "value": "Physical Activity",
+        "count": 58520,
+        "percentage": 52.78
+      },
+      "value_distribution": [
+        {
+          "value": "Physical Activity",
+          "count": 58520,
+          "percentage": 52.78
+        },
+        {
+          "value": "Obesity / Weight Status",
+          "count": 43120,
+          "percentage": 38.89
+        },
+        {
+          "value": "Fruits and Vegetables",
+          "count": 9240,
+          "percentage": 8.33
+        }
+      ]
+    },
+    "Topic": {
+      "unique_values": 3,
+      "most_frequent": {
+        "value": "Physical Activity - Behavior",
+        "count": 58520,
+        "percentage": 52.78
+      },
+      "value_distribution": [
+        {
+          "value": "Physical Activity - Behavior",
+          "count": 58520,
+          "percentage": 52.78
+        },
+        {
+          "value": "Obesity / Weight Status",
+          "count": 43120,
+          "percentage": 38.89
+        },
+        {
+          "value": "Fruits and Vegetables - Behavior",
+          "count": 9240,
+          "percentage": 8.33
+        }
+      ]
+    }
+  },
+  "numeric_analysis": {
+    "YearStart": {
+      "count": 110880,
+      "mean": 2017.236111111111,
+      "median": 2017.0,
+      "std": 3.93170190205203,
+      "min": 2011.0,
+      "max": 2024.0,
+      "q25": 2014.0,
+      "q75": 2020.25,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": 2004.625,
+        "upper_bound": 2029.625
+      },
+      "skewness": 0.029179557573090396,
+      "kurtosis": -1.1154040709108022
+    },
+    "YearEnd": {
+      "count": 110880,
+      "mean": 2017.236111111111,
+      "median": 2017.0,
+      "std": 3.93170190205203,
+      "min": 2011.0,
+      "max": 2024.0,
+      "q25": 2014.0,
+      "q75": 2020.25,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": 2004.625,
+        "upper_bound": 2029.625
+      },
+      "skewness": 0.029179557573090396,
+      "kurtosis": -1.1154040709108022
+    },
+    "Data_Value": {
+      "count": 97666,
+      "mean": 31.800251878852414,
+      "median": 31.8,
+      "std": 10.343087196769803,
+      "min": 0.9,
+      "max": 85.3,
+      "q25": 24.9,
+      "q75": 37.4,
+      "outliers": {
+        "count": 2496,
+        "percentage": 2.56,
+        "lower_bound": 6.149999999999999,
+        "upper_bound": 56.15
+      },
+      "skewness": 0.45941658503760807,
+      "kurtosis": 0.662841388560218
+    },
+    "Data_Value_Alt": {
+      "count": 97666,
+      "mean": 31.800251878852414,
+      "median": 31.8,
+      "std": 10.343087196769803,
+      "min": 0.9,
+      "max": 85.3,
+      "q25": 24.9,
+      "q75": 37.4,
+      "outliers": {
+        "count": 2496,
+        "percentage": 2.56,
+        "lower_bound": 6.149999999999999,
+        "upper_bound": 56.15
+      },
+      "skewness": 0.45941658503760807,
+      "kurtosis": 0.662841388560218
+    },
+    "Low_Confidence_Limit": {
+      "count": 97666,
+      "mean": 27.395235803657364,
+      "median": 27.3,
+      "std": 10.130335192867152,
+      "min": 0.3,
+      "max": 74.7,
+      "q25": 20.4,
+      "q75": 33.3,
+      "outliers": {
+        "count": 2037,
+        "percentage": 2.09,
+        "lower_bound": 1.0500000000000007,
+        "upper_bound": 52.64999999999999
+      },
+      "skewness": 0.5036154822371204,
+      "kurtosis": 0.7735193857210763
+    },
+    "High_Confidence_Limit ": {
+      "count": 97666,
+      "mean": 36.7670704236889,
+      "median": 36.5,
+      "std": 11.282277570712848,
+      "min": 3.0,
+      "max": 92.4,
+      "q25": 29.2,
+      "q75": 42.8,
+      "outliers": {
+        "count": 2298,
+        "percentage": 2.35,
+        "lower_bound": 8.8,
+        "upper_bound": 63.199999999999996
+      },
+      "skewness": 0.45861329843685217,
+      "kurtosis": 0.5016407814297947
+    },
+    "Sample_Size": {
+      "count": 97666,
+      "mean": 3624.71683083161,
+      "median": 1079.0,
+      "std": 18583.46798989511,
+      "min": 50.0,
+      "max": 476876.0,
+      "q25": 494.0,
+      "q75": 2399.0,
+      "outliers": {
+        "count": 9015,
+        "percentage": 9.23,
+        "lower_bound": -2363.5,
+        "upper_bound": 5256.5
+      },
+      "skewness": 14.825952224516168,
+      "kurtosis": 265.79605017403156
+    },
+    "LocationID": {
+      "count": 110880,
+      "mean": 31.854545454545455,
+      "median": 31.0,
+      "std": 18.39219407430792,
+      "min": 1.0,
+      "max": 78.0,
+      "q25": 17.0,
+      "q75": 46.0,
+      "outliers": {
+        "count": 0,
+        "percentage": 0.0,
+        "lower_bound": -26.5,
+        "upper_bound": 89.5
+      },
+      "skewness": 0.31837026458240425,
+      "kurtosis": -0.5292941830434308
+    }
+  },
+  "relationships": {
+    "correlations": {
+      "matrix": {
+        "YearStart": {
+          "YearStart": 1.0,
+          "YearEnd": 1.0,
+          "Data_Value": 0.093,
+          "Data_Value_Alt": 0.093,
+          "Low_Confidence_Limit": 0.077,
+          "High_Confidence_Limit ": 0.101,
+          "Sample_Size": -0.012,
+          "LocationID": 0.0
+        },
+        "YearEnd": {
+          "YearStart": 1.0,
+          "YearEnd": 1.0,
+          "Data_Value": 0.093,
+          "Data_Value_Alt": 0.093,
+          "Low_Confidence_Limit": 0.077,
+          "High_Confidence_Limit ": 0.101,
+          "Sample_Size": -0.012,
+          "LocationID": 0.0
+        },
+        "Data_Value": {
+          "YearStart": 0.093,
+          "YearEnd": 0.093,
+          "Data_Value": 1.0,
+          "Data_Value_Alt": 1.0,
+          "Low_Confidence_Limit": 0.957,
+          "High_Confidence_Limit ": 0.943,
+          "Sample_Size": -0.005,
+          "LocationID": 0.006
+        },
+        "Data_Value_Alt": {
+          "YearStart": 0.093,
+          "YearEnd": 0.093,
+          "Data_Value": 1.0,
+          "Data_Value_Alt": 1.0,
+          "Low_Confidence_Limit": 0.957,
+          "High_Confidence_Limit ": 0.943,
+          "Sample_Size": -0.005,
+          "LocationID": 0.006
+        },
+        "Low_Confidence_Limit": {
+          "YearStart": 0.077,
+          "YearEnd": 0.077,
+          "Data_Value": 0.957,
+          "Data_Value_Alt": 0.957,
+          "Low_Confidence_Limit": 1.0,
+          "High_Confidence_Limit ": 0.808,
+          "Sample_Size": 0.051,
+          "LocationID": 0.005
+        },
+        "High_Confidence_Limit ": {
+          "YearStart": 0.101,
+          "YearEnd": 0.101,
+          "Data_Value": 0.943,
+          "Data_Value_Alt": 0.943,
+          "Low_Confidence_Limit": 0.808,
+          "High_Confidence_Limit ": 1.0,
+          "Sample_Size": -0.063,
+          "LocationID": 0.009
+        },
+        "Sample_Size": {
+          "YearStart": -0.012,
+          "YearEnd": -0.012,
+          "Data_Value": -0.005,
+          "Data_Value_Alt": -0.005,
+          "Low_Confidence_Limit": 0.051,
+          "High_Confidence_Limit ": -0.063,
+          "Sample_Size": 1.0,
+          "LocationID": 0.151
+        },
+        "LocationID": {
+          "YearStart": 0.0,
+          "YearEnd": 0.0,
+          "Data_Value": 0.006,
+          "Data_Value_Alt": 0.006,
+          "Low_Confidence_Limit": 0.005,
+          "High_Confidence_Limit ": 0.009,
+          "Sample_Size": 0.151,
+          "LocationID": 1.0
+        }
+      },
+      "strong_correlations": [
+        {
+          "column1": "YearStart",
+          "column2": "YearEnd",
+          "correlation": 1.0
+        },
+        {
+          "column1": "Data_Value",
+          "column2": "Data_Value_Alt",
+          "correlation": 1.0
+        },
+        {
+          "column1": "Data_Value",
+          "column2": "Low_Confidence_Limit",
+          "correlation": 0.957
+        },
+        {
+          "column1": "Data_Value_Alt",
+          "column2": "Low_Confidence_Limit",
+          "correlation": 0.957
+        },
+        {
+          "column1": "Data_Value",
+          "column2": "High_Confidence_Limit ",
+          "correlation": 0.943
+        },
+        {
+          "column1": "Data_Value_Alt",
+          "column2": "High_Confidence_Limit ",
+          "correlation": 0.943
+        },
+        {
+          "column1": "Low_Confidence_Limit",
+          "column2": "High_Confidence_Limit ",
+          "correlation": 0.808
+        }
+      ]
+    }
+  }
+}

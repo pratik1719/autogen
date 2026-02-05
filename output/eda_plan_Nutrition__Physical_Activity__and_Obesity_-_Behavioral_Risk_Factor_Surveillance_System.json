@@ -1,0 +1,66 @@
+{
+  "dataset_type": "mixed",
+  "key_columns": {
+    "categorical": [
+      "Datasource",
+      "Class",
+      "Topic",
+      "Question",
+      "Data_Value_Unit"
+    ],
+    "numeric": [
+      "YearStart",
+      "YearEnd",
+      "Data_Value",
+      "Data_Value_Alt",
+      "Low_Confidence_Limit"
+    ]
+  },
+  "recommended_visualizations": [
+    {
+      "type": "histogram",
+      "column": "YearStart",
+      "title": "Distribution of YearStart"
+    },
+    {
+      "type": "boxplot",
+      "column": "YearStart",
+      "title": "Outliers in YearStart"
+    },
+    {
+      "type": "histogram",
+      "column": "YearEnd",
+      "title": "Distribution of YearEnd"
+    },
+    {
+      "type": "boxplot",
+      "column": "YearEnd",
+      "title": "Outliers in YearEnd"
+    },
+    {
+      "type": "bar",
+      "column": "Datasource",
+      "title": "Frequency of Datasource"
+    },
+    {
+      "type": "bar",
+      "column": "Class",
+      "title": "Frequency of Class"
+    },
+    {
+      "type": "correlation_heatmap",
+      "columns": [
+        "YearStart",
+        "YearEnd",
+        "Data_Value",
+        "Data_Value_Alt",
+        "Low_Confidence_Limit"
+      ],
+      "title": "Correlation Matrix"
+    }
+  ],
+  "recommended_analyses": {
+    "categorical": [],
+    "numeric": []
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "dataset_type": "time-series",
+  "key_columns": {
+    "categorical": [
+      "product",
+      "region",
+      "channel",
+      "returns"
+    ],
+    "numeric": [
+      "units_sold",
+      "unit_price",
+      "discount_percent",
+      "shipping_cost",
+      "customer_rating",
+      "revenue",
+      "profit"
+    ],
+    "datetime": [
+      "date"
+    ],
+    "potential_target": "revenue"
+  },
+  "recommended_analyses": {
+    "categorical": [
+      {
+        "column": "product",
+        "analysis": "frequency_distribution",
+        "reason": "To understand the sales distribution across different product categories and identify popular items."
+      },
+      {
+        "column": "region",
+        "analysis": "frequency_distribution",
+        "reason": "To identify key geographical markets and their contribution to overall sales."
+      },
+      {
+        "column": "channel",
+        "analysis": "frequency_distribution",
+        "reason": "To understand the primary sales channels and their prevalence in transactions."
+      },
+      {
+        "column": "returns",
+        "analysis": "frequency_distribution",
+        "reason": "To assess the overall return rate and identify if returns are a significant issue."
+      }
+    ],
+    "numeric": [
+      {
+        "column": "units_sold",
+        "analysis": "descriptive_statistics_and_distribution",
+        "reason": "To understand typical sales volumes, variability, and identify any unusual transaction sizes."
+      },
+      {
+        "column": "unit_price",
+        "analysis": "descriptive_statistics_and_distribution",
+        "reason": "To analyze pricing strategies, price point distribution, and potential pricing anomalies."
+      },
+      {
+        "column": "discount_percent",
+        "analysis": "descriptive_statistics_and_distribution",
+        "reason": "To understand the frequency and magnitude of discounts applied, and their range."
+      },
+      {
+        "column": "customer_rating",
+        "analysis": "distribution_and_missing_value_analysis",
+        "reason": "To assess customer satisfaction levels, identify patterns in ratings, and handle the 3.13% missing values."
+      },
+      {
+        "column": "revenue",
+        "analysis": "descriptive_statistics_and_distribution",
+        "reason": "To understand the overall sales performance, its spread, and identify high/low revenue transactions."
+      },
+      {
+        "column": "profit",
+        "analysis": "descriptive_statistics_and_distribution",
+        "reason": "To analyze profitability patterns, identify highly profitable or loss-making transactions, and understand its range."
+      }
+    ],
+    "relationships": [
+      {
+        "columns": [
+          "date",
+          "revenue"
+        ],
+        "analysis": "time_series_trend_seasonality",
+        "reason": "To identify overall revenue trends, seasonality, and cyclical patterns over time, crucial for forecasting."
+      },
+      {
+        "columns": [
+          "product",
+          "revenue"
+        ],
+        "analysis": "group_statistics_and_comparison",
+        "reason": "To compare average/total revenue performance across different products and identify top/bottom performers."
+      },
+      {
+        "columns": [
+          "region",
+          "profit"
+        ],
+        "analysis": "group_statistics_and_comparison",
+        "reason": "To compare profitability across different geographical regions and identify regional strengths/weaknesses."
+      },
+      {
+        "columns": [
+          "channel",
+          "units_sold"
+        ],
+        "analysis": "group_statistics_and_comparison",
+        "reason": "To understand sales volume distribution across different sales channels and their effectiveness."
+      },
+      {
+        "columns": [
+          "discount_percent",
+          "revenue"
+        ],
+        "analysis": "correlation_and_impact_analysis",
+        "reason": "To assess the impact of discounts on revenue generation and potential trade-offs."
+      },
+      {
+        "columns": [
+          "customer_rating",
+          "returns"
+        ],
+        "analysis": "group_statistics_and_comparison",
+        "reason": "To investigate the relationship between customer satisfaction (ratings) and product returns."
+      },
+      {
+        "columns": [
+          "units_sold",
+          "unit_price",
+          "discount_percent",
+          "shipping_cost",
+          "customer_rating",
+          "revenue",
+          "profit"
+        ],
+        "analysis": "correlation_matrix",
+        "reason": "To understand the interdependencies and strength of linear relationships among key financial and operational metrics."
+      }
+    ]
+  },
+  "recommended_visualizations": [
+    {
+      "type": "line_chart",
+      "x": "date",
+      "y": "revenue",
+      "title": "Daily Revenue Trend Over Time"
+    },
+    {
+      "type": "histogram",
+      "column": "revenue",
+      "title": "Distribution of Revenue"
+    },
+    {
+      "type": "boxplot",
+      "column": "profit",
+      "title": "Distribution and Outliers of Profit"
+    },
+    {
+      "type": "bar_chart",
+      "column": "product",
+      "title": "Sales Frequency by Product"
+    },
+    {
+      "type": "correlation_heatmap",
+      "columns": [
+        "units_sold",
+        "unit_price",
+        "discount_percent",
+        "shipping_cost",
+        "customer_rating",
+        "revenue",
+        "profit"
+      ],
+      "title": "Correlation Matrix of Numeric Features"
+    },
+    {
+      "type": "scatter_plot",
+      "x": "units_sold",
+      "y": "revenue",
+      "title": "Units Sold vs. Revenue"
+    },
+    {
+      "type": "grouped_boxplot",
+      "x": "product",
+      "y": "revenue",
+      "title": "Revenue Distribution by Product"
+    }
+  ],
+  "data_quality_checks": [
+    "check_duplicates",
+    "check_missing_values_per_column",
+    "check_data_types_conversion",
+    "check_for_constant_columns",
+    "check_for_outliers_in_numeric_columns"
+  ],
+  "expected_insights": [
+    "Overall trends and seasonality in sales and profitability over time, indicating growth or decline periods.",
+    "Identification of top-performing and underperforming products, regions, and sales channels.",
+    "Impact of pricing, discounts, and shipping costs on revenue and profit margins.",
+    "Relationship between customer ratings and product returns, potentially highlighting quality issues.",
+    "Distribution patterns, outliers, and anomalies in key financial and operational metrics that might require further investigation.",
+    "Missing data patterns in 'customer_rating' and strategies for imputation or handling to avoid bias.",
+    "Potential correlations between different numerical features that could inform feature engineering or model building."
+  ]
+}
