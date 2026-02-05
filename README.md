@@ -1,6 +1,6 @@
 # 🚀 AutoGen-EDA: LLM-Assisted Automated Dataset Analysis
 
-**Author:** Pratik Dilip Jadhav (pratik1719)  
+**Author:** Pratik Mohan Patil (pratik1719)  
 **Course:** Data Science - CU Boulder  
 **Assignment:** Automated Dataset Insight Generator
 
@@ -410,7 +410,7 @@ MIT License - Feel free to use for learning and educational purposes.
 
 ## 📧 Contact
 
-**Pratik Dilip Jadhav**
+**Pratik Mohan Patil**
 - GitHub: [@pratik1719](https://github.com/pratik1719)
 - Project: AutoGen-EDA
 
